@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Annayya</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap">
+  <style>
+    /* General Styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Baloo 2', cursive;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee, #f6d365);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Birthday Box */
+    .birthday-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 300px;
+      height: 200px;
+      background: linear-gradient(135deg, rgba(255, 223, 186, 0.9), rgba(255, 215, 0, 0.9));
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: openBox 2s ease-in-out forwards;
+      z-index: 10;
+    }
+
+    @keyframes openBox {
+      0% { transform: translate(-50%, -50%) scale(0); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
+
+    .message {
+      font-size: 24px;
+      font-weight: bold;
+      color: #d35400;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .special-image {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: none;
+      animation: scaleUp 2s ease-in-out forwards;
+    }
+
+    @keyframes scaleUp {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+
+    /* Balloon Animation */
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      background-color: #ff6347;
+      border-radius: 50%;
+      animation: floatBalloon 10s infinite ease-in-out;
+    }
+
+    .balloon:nth-child(odd) {
+      background-color: #87ceeb;
+    }
+
+    .balloon:nth-child(2) {
+      background-color: #ffd700;
+    }
+
+    .balloon:nth-child(3) {
+      background-color: #ff69b4;
+    }
+
+    @keyframes floatBalloon {
+      0% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-200px) rotate(15deg); }
+      100% { transform: translateY(-400px) rotate(0); }
+    }
+
+    /* Image Slider */
+    .image-slider {
+      position: absolute;
+      top: 20%;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      z-index: 2;
+      display: none;
+    }
+
+    .slider-wrapper {
+      display: flex;
+      width: 300%;
+      height: 100%;
+      animation: scrollImages 20s linear infinite;
+    }
+
+    .image-slider img {
+      width: 20vw;
+      height: 40vh;
+      object-fit: cover;
+      border: 5px solid #fff;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .image-slider img:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes scrollImages {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-66.666%); }
+    }
+
+    /* Stars Container */
+    .stars-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    /* Confetti Container */
+    .confetti-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 3;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ffd700;
+      border-radius: 50%;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(720deg); }
+    }
+
+    /* Fireworks */
+    .firework {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: #ff0;
+      border-radius: 50%;
+      animation: explode 1s ease-out forwards;
+    }
+
+    @keyframes explode {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(10); opacity: 0; }
+    }
+
+    /* Music Controls */
+    .music-control {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .music-control img {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .image-slider img {
+        width: 40vw;
+        height: 25vh;
+      }
+
+      .birthday-box {
+        width: 80%;
+        height: 150px;
+      }
+
+      .message {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <H1 style="text-align: center;">Wish You Many More Happy Writtens of the Day Annayya</H1>
+  </div>
+  <div class="container">
+   
+    <!-- Birthday Box -->
+    <div class="birthday-box" id="birthdayBox">
+      <div class="message" id="birthdayMessage">Happy Birthday Annayya!</div>
+      <img src="image1.jpg" alt="Special Image" class="special-image" id="specialImage">
+    </div>
+
+    <!-- Image Slider -->
+    <div class="image-slider" id="imageSlider">
+      <div class="slider-wrapper">
+        <img src="image1.jpg" alt="Birthday Image 1">
+        <img src="image2.jpg" alt="Birthday Image 2">
+        <img src="image3.jpg" alt="Birthday Image 3">
+        <img src="image4.jpg" alt="Birthday Image 4">
+        <img src="image5.jpg" alt="Birthday Image 5">
+      </div>
+    </div>
+
+    <!-- Stars Container -->
+    <div class="stars-container" id="starsContainer"></div>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <!-- Fireworks Container -->
+    <div class="fireworks-container" id="fireworksContainer"></div>
+
+    <!-- Balloons Container -->
+    <div class="balloons-container" id="balloonsContainer"></div>
+
+    <!-- Music Controls -->
+    <div class="music-control" id="musicControl">
+      <img src="music-icon.png" alt="Play/Pause">
+    </div>
+
+    <!-- Audio -->
+    <audio id="backgroundMusic" autoplay loop>
+      <source src="song.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const birthdayBox = document.getElementById('birthdayBox');
+      const birthdayMessage = document.getElementById('birthdayMessage');
+      const specialImage = document.getElementById('specialImage');
+      const imageSlider = document.getElementById('imageSlider');
+      const starsContainer = document.getElementById('starsContainer');
+      const confettiContainer = document.getElementById('confettiContainer');
+      const fireworksContainer = document.getElementById('fireworksContainer');
+      const balloonsContainer = document.getElementById('balloonsContainer');
+      const musicControl = document.getElementById('musicControl');
+      const backgroundMusic = document.getElementById('backgroundMusic');
+
+      // Function to create balloons
+      function createBalloon() {
+        const balloon = document.createElement('div');
+        balloon.classList.add('balloon');
+        const xPosition = Math.random() * window.innerWidth;
+        balloon.style.left = `${xPosition}px`;
+        balloonsContainer.appendChild(balloon);
+        balloon.addEventListener('animationend', () => {
+          balloon.remove();
+        });
+      }
+
+      // Create balloons continuously
+      setInterval(createBalloon, 1000);
+
+      // Music control
+      musicControl.addEventListener('click', () => {
+        if (backgroundMusic.paused) {
+          backgroundMusic.play();
+          musicControl.innerHTML = '<img src="pause-icon.png" alt="Pause">';
+        } else {
+          backgroundMusic.pause();
+          musicControl.innerHTML = '<img src="play-icon.png" alt="Play">';
+        }
+      });
+
+      // After the box animation completes, show the message and then the rest of the content
+      birthdayBox.addEventListener('animationend', () => {
+        birthdayMessage.style.opacity = '1';
+        setTimeout(() => {
+          birthdayMessage.style.display = 'none';
+          birthdayBox.style.background='none'
+          specialImage.style.display = 'block';
+          specialImage.style.width="200px" 
+          specialImage.style.borderRadius="15px";
+          specialImage.style.borderColor="3px solid black"
+          specialImage.style.height="200px" // Show the special image
+          imageSlider.style.display = 'block'; // Show the image slider
+          starsContainer.style.display = 'block'; // Show stars
+        }, 2000); // Delay to show the special image and images
+      });
+    });
+  </script>
+</body>
+
+</html>
